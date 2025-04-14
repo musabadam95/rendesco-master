@@ -2,7 +2,7 @@ import React, { useEffect, useMemo } from "react";
 import { EnergyData } from "../../types/Energy.types";
 import './GreenEnergyPercentage.css';
 const GreenEnergyPercentage = () => {
-    const [currentEnergyData, setCurrentEnergyData] = React.useState<EnergyData[]>([]);
+    const [CurrentEnergyData, setCurrentEnergyData] = React.useState<EnergyData[]>([]);
 
     useEffect(() => {
         async function fetchData() {
@@ -54,7 +54,7 @@ const GreenEnergyPercentage = () => {
             { rating: "NG", generation: 0 },
             { rating: "N", generation: 0 }
         ];
-        currentEnergyData.forEach((data) => {
+        CurrentEnergyData.forEach((data) => {
             const category = energyCategory.find(cat => cat.name === data.fuelType);
             if (category) {
                 const ratingIndex = currEnergyGreenUsage.findIndex(rating => rating.rating === category.rating);
@@ -64,7 +64,7 @@ const GreenEnergyPercentage = () => {
             }
         });
         return currEnergyGreenUsage
-    }, [currentEnergyData])
+    }, [CurrentEnergyData])
 
 
     const overallGreenPercentage = useMemo(() => {

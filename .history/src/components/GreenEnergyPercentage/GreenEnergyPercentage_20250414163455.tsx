@@ -54,7 +54,7 @@ const GreenEnergyPercentage = () => {
             { rating: "NG", generation: 0 },
             { rating: "N", generation: 0 }
         ];
-        currentEnergyData.forEach((data) => {
+        CurrentEnergyData.forEach((data) => {
             const category = energyCategory.find(cat => cat.name === data.fuelType);
             if (category) {
                 const ratingIndex = currEnergyGreenUsage.findIndex(rating => rating.rating === category.rating);
@@ -64,7 +64,7 @@ const GreenEnergyPercentage = () => {
             }
         });
         return currEnergyGreenUsage
-    }, [currentEnergyData])
+    }, [CurrentEnergyData])
 
 
     const overallGreenPercentage = useMemo(() => {

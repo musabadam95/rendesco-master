@@ -20,7 +20,7 @@ const GreenEnergyPercentage = () => {
                 setIsLoading(false)
             } else {
                 setCurrentEnergyData([]);
-                setError('Error fetching data' + response.statusText)
+                setError('Error fetching data'+ response.statusText)
             }
         }
         fetchData()
@@ -88,11 +88,11 @@ const GreenEnergyPercentage = () => {
 
     }, [percentageClass])
 
-    if (error) {
-        return (
-            <h1>There was a problem retrieving data</h1>
-        )
-    }
+if(error){
+    return (
+        <h1>There was a problem retrieving data<h1/>
+    )
+}
 
     if (isLoading) {
         return (

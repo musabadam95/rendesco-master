@@ -4,14 +4,13 @@ import './GreenEnergyPercentage.css';
 const GreenEnergyPercentage = () => {
     const [currentEnergyData, setCurrentEnergyData] = useState<EnergyData[]>([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
     useEffect(() => {
         async function fetchData() {
             const response = await fetch('https://data.elexon.co.uk/bmrs/api/v1/generation/outturn/current');
             if (response.status === 200) {
                 const data = await response.json();
                 if (!data) {
-                    setError('Error fetching data');
+                    console.log('Error fetching data', data);
                     setCurrentEnergyData([]);
                     return;
                 }
@@ -19,8 +18,8 @@ const GreenEnergyPercentage = () => {
                 setCurrentEnergyData(dataTransactions);
                 setIsLoading(false)
             } else {
+                console.log('Error fetching data', response.statusText);
                 setCurrentEnergyData([]);
-                setError('Error fetching data' + response.statusText)
             }
         }
         fetchData()
@@ -88,19 +87,14 @@ const GreenEnergyPercentage = () => {
 
     }, [percentageClass])
 
-    if (error) {
-        return (
-            <h1>There was a problem retrieving data</h1>
-        )
-    }
-
     if (isLoading) {
         return (
             <>
                 <h1>...Loading data</h1>
             </>
         )
-    } else {
+    }
+    if (!isLoading) {
         return (
             <>
                 <h1 className={`green-percentage ${percentageClass}`}>

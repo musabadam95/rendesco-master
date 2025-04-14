@@ -1,0 +1,15 @@
+.green-percentage {
+    color: black; /* Default color */
+}
+
+.green-percentage.low {
+    color: red; /* Low green percentage */
+}
+
+.green-percentage.medium {
+    color: orange; /* Medium green percentage */
+}
+
+.green-percentage.high {
+    color: green; /* High green percentage */
+}
